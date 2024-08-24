@@ -74,6 +74,11 @@ download_app_repo() {
   rm -rf ${rootfs_overlay}/opt/requirements.txt
   rm -rf ${rootfs_overlay}/opt/seedsigner_pubkey.gpg
   rm -rf ${rootfs_overlay}/opt/setup.py
+  rm -rf ${rootfs_overlay}/opt/LICENSE
+  rm -rf ${rootfs_overlay}/opt/seedsigner.dev.sha256.txt
+  rm -rf ${rootfs_overlay}/opt/seedsigner.dev.sha256.txt.sig
+  rm -rf ${rootfs_overlay}/opt/seedsigner_os.dev.pi0.img
+  rm -rf ${rootfs_overlay}/opt/SeedSigner_translation_pubkey.gpg
 
 
 }
