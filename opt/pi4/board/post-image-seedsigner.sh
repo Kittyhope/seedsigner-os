@@ -10,14 +10,23 @@ sectorsToBytes() {
   echo $(( "$1" * 512 ))
 }
 
+calculateRequiredSpace() {
+  local boot_size=$(du -sm ${BUILD_DIR}/images/rpi-firmware ${BASE_DIR}/images/*.dtb ${BASE_DIR}/images/zImage | awk '{total += $1} END {print total}')
+  local required_size=$(( boot_size + 10 ))  # Add 10MB buffer
+  echo $required_size
+}
+
 export disk_timestamp="2023/01/01T12:15:05"
 
 rm -rf ${BUILD_DIR}/custom_image
 mkdir -p ${BUILD_DIR}/custom_image
 cd ${BUILD_DIR}/custom_image
 
-# Create disk image.
-dd if=/dev/zero of=disk.img bs=1M count=26 #26 MB
+# Calculate required disk size
+DISK_SIZE=$(calculateRequiredSpace)
+
+# Create disk image with calculated size
+dd if=/dev/zero of=disk.img bs=1M count=${DISK_SIZE}
 
 ### needed: apt install fdisk
 /sbin/sfdisk disk.img <<EOF
