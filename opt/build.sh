@@ -86,11 +86,30 @@ download_app_repo() {
 update_buildroot_config() {
     local config_file="$1"
     echo "Updating Buildroot configuration..."
+
+    # Add or update entries in the config file
+    sed -i '/BR2_PACKAGE_HOST_PYTHON_TOMLI=/d' "$config_file"
+    echo "BR2_PACKAGE_HOST_PYTHON_TOMLI=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_HOST_PYTHON_TOML=/d' "$config_file"
+    echo "BR2_PACKAGE_HOST_PYTHON_TOML=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_PYTHON_TOMLI=/d' "$config_file"
     echo "BR2_PACKAGE_PYTHON_TOMLI=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_PYTHON_TOML=/d' "$config_file"
     echo "BR2_PACKAGE_PYTHON_TOML=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_OPENSSL=/d' "$config_file"
     echo "BR2_PACKAGE_OPENSSL=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_LIBSODIUM=/d' "$config_file"
     echo "BR2_PACKAGE_LIBSODIUM=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_PYTHON_PYNACL=/d' "$config_file"
     echo "BR2_PACKAGE_PYTHON_PYNACL=y" >> "$config_file"
+
+    sed -i '/BR2_PACKAGE_PYTHON_CRYPTOGRAPHY=/d' "$config_file"
     echo "BR2_PACKAGE_PYTHON_CRYPTOGRAPHY=y" >> "$config_file"
 }
 
