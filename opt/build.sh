@@ -83,6 +83,15 @@ download_app_repo() {
 
 }
 
+update_buildroot_config() {
+    local config_file="$1"
+    echo "Updating Buildroot configuration..."
+    echo "BR2_PACKAGE_PYTHON_TOMLI=y" >> "$config_file"
+    echo "BR2_PACKAGE_PYTHON_TOML=y" >> "$config_file"
+    echo "BR2_PACKAGE_PYTHON_PYNACL=y" >> "$config_file"
+    echo "BR2_PACKAGE_PYTHON_CRYPTOGRAPHY=y" >> "$config_file"
+}
+
 build_image() {
   # arguments: $1 - config name, $2 clean/no-clean - allows for, $3 skip-repo
 
@@ -117,8 +126,14 @@ build_image() {
   #make BR2_EXTERNAL="../${config_dir}/" O="${build_dir}" -C ./buildroot/ #2> /dev/null > /dev/null
 
   make BR2_EXTERNAL="../${config_dir}/" O="${build_dir}" -C ./buildroot/ ${config_name}_defconfig
+  update_buildroot_config "${build_dir}/.config"
+
   cd "${build_dir}"
-  make
+  if ! make; then
+    echo "Build failed. Check the error messages above."
+    echo "You may need to update Buildroot configurations or check your environment."
+    exit 1
+  fi
   
   # if successful, mv seedsigner_os.img image to /images
   # rename to image to include branch name and config name, then compress

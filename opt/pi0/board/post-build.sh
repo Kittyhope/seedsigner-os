@@ -64,8 +64,16 @@ rm -f ${TARGET_DIR}/usr/lib/python3.10/site-packages/numpy/lib/recfunctions.pyc
 rm -f ${TARGET_DIR}/usr/lib/python3.10/site-packages/numpy/lib/stride_tricks.pyc
 rm -f ${TARGET_DIR}/usr/lib/python3.10/traceback.pyc
 rm -f ${TARGET_DIR}/usr/lib/python3.10/_sysconfigdata__linux_arm-linux-gnueabihf.pyc
+rm -f ${TARGET_DIR}/usr/lib/python3.10/subprocess.pyc
+rm -f ${TARGET_DIR}/usr/lib/python3.10/site-packages/nacl/*.pyc
+rm -f ${TARGET_DIR}/usr/lib/python3.10/site-packages/cryptography/*.pyc
+rm -f ${TARGET_DIR}/usr/lib/python3.10/site-packages/cffi/*.pyc
 
 find ${TARGET_DIR}/usr/lib/python3.10 -name '*.py' \
+    -not -path "*/python3.10/subprocess.py" \
+    -not -path "*/python3.10/site-packages/nacl/*.py" \
+    -not -path "*/python3.10/site-packages/cryptography/*.py" \
+    -not -path "*/python3.10/site-packages/cffi/*.py" \
 	-not -path "*/python3.10/multiprocessing/connection.py" \
 	-not -path "*/python3.10/json/decoder.py" \
 	-not -path "*/python3.10/site-packages/numpy/core/_string_helpers.py" \
