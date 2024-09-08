@@ -88,6 +88,7 @@ update_buildroot_config() {
     echo "Updating Buildroot configuration..."
     echo "BR2_PACKAGE_PYTHON_TOMLI=y" >> "$config_file"
     echo "BR2_PACKAGE_PYTHON_TOML=y" >> "$config_file"
+    echo "BR2_PACKAGE_OPENSSL=y" >> "$config_file"
     echo "BR2_PACKAGE_PYTHON_PYNACL=y" >> "$config_file"
     echo "BR2_PACKAGE_PYTHON_CRYPTOGRAPHY=y" >> "$config_file"
 }
