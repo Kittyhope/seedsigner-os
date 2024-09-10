@@ -66,6 +66,7 @@ rm -f ${TARGET_DIR}/usr/lib/python3.10/traceback.pyc
 rm -f ${TARGET_DIR}/usr/lib/python3.10/_sysconfigdata__linux_arm-linux-gnueabihf.pyc
 
 find ${TARGET_DIR}/usr/lib/python3.10 -name '*.py' \
+	-not -path "*/python3.10/site-packages/tomli/*" \
 	-not -path "*/python3.10/multiprocessing/connection.py" \
 	-not -path "*/python3.10/json/decoder.py" \
 	-not -path "*/python3.10/site-packages/numpy/core/_string_helpers.py" \
