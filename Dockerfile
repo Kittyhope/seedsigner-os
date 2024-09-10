@@ -27,7 +27,11 @@ build-essential \
 libncurses-dev \
 mtools \
 fdisk \
-dosfstools
+dosfstools \
+python-is-python3
+
+RUN apt-get -y install python3-pip
+RUN pip3 install tomli  
 
 # Locale
 RUN locale-gen en_US.UTF-8  
