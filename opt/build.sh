@@ -4,7 +4,7 @@
 cur_dir_name=${PWD##*/}
 cur_dir=$(pwd)
 seedsigner_app_repo="https://github.com/Kittyhope/SeedSigner_translation.git"
-seedsigner_app_repo_branch="dev"
+seedsigner_app_repo_branch="v0.1.0"
 
 help()
 {
