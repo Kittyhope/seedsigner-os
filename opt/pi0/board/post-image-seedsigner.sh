@@ -12,7 +12,7 @@ sectorsToBytes() {
 
 calculateRequiredSpace() {
   local boot_size=$(du -sm ${BUILD_DIR}/images/rpi-firmware ${BASE_DIR}/images/*.dtb ${BASE_DIR}/images/zImage | awk '{total += $1} END {print total}')
-  local required_size=$(( boot_size + 10 ))  # Add 10MB buffer
+  local required_size=$(( boot_size + 500 ))  # Add 10MB buffer
   echo $required_size
 }
 
