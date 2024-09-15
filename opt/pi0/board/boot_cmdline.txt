@@ -1,1 +1,2 @@
 spidev.bufsiz=131072
+bcm2708_rng
