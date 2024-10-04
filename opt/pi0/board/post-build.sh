@@ -94,3 +94,4 @@ SOURCE_DATE_EPOCH=1 PYTHONHASHSEED=0 ${HOST_DIR}/bin/python3.10 \
 
 echo "/usr/sbin/rngd -r /dev/hwrng" > ${TARGET_DIR}/etc/init.d/S99rngd
 chmod +x ${TARGET_DIR}/etc/init.d/S99rngd
+echo "4096" > ${TARGET_DIR}/proc/sys/kernel/random/poolsize
