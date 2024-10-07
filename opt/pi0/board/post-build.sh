@@ -116,3 +116,4 @@ exit 0
 EOF
 
 chmod +x ${TARGET_DIR}/etc/init.d/S98set_random_poolsize
+echo "kernel.random.poolsize=4096" >> ${TARGET_DIR}/etc/sysctl.conf
