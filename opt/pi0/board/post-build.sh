@@ -100,6 +100,7 @@ chmod +x ${TARGET_DIR}/etc/init.d/S99rngd
 echo "i2c-dev" >> "${TARGET_DIR}/etc/modules"
 echo "i2c-bcm2835" >> "${TARGET_DIR}/etc/modules"
 
+mkdir -p "${TARGET_DIR}/etc/udev/rules.d"
 # Create udev rule for I2C permissions
 cat <<EOF > "${TARGET_DIR}/etc/udev/rules.d/99-i2c.rules"
 KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
