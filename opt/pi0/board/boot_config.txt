@@ -12,7 +12,7 @@ start_x=1
 
 # Enable SPI
 dtparam=spi=on
-
+dtparam=i2c_arm=on
 # Set the bootloader delay to 0 seconds. The default is 1s if not specified
 boot_delay=0
 disable_splash=1

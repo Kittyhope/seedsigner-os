@@ -94,3 +94,13 @@ SOURCE_DATE_EPOCH=1 PYTHONHASHSEED=0 ${HOST_DIR}/bin/python3.10 \
 
 echo "/usr/sbin/rngd -r /dev/hwrng" > ${TARGET_DIR}/etc/init.d/S99rngd
 chmod +x ${TARGET_DIR}/etc/init.d/S99rngd
+
+
+# Ensure I2C modules are loaded at boot
+echo "i2c-dev" >> "${TARGET_DIR}/etc/modules"
+echo "i2c-bcm2835" >> "${TARGET_DIR}/etc/modules"
+
+# Create udev rule for I2C permissions
+cat <<EOF > "${TARGET_DIR}/etc/udev/rules.d/99-i2c.rules"
+KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+EOF
